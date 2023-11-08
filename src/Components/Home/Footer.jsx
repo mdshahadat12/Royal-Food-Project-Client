@@ -13,7 +13,7 @@ const Footer = () => {
                                     src='https://i.ibb.co/mtfMMHb/Royal-Food-Logo.png'
                                     className="h-8 mr-3"
                                 />
-                                <span className="self-center text-orange-500 text-2xl font-extrabold whitespace-nowrap dark:text-white">
+                                <span className="self-center text-green-500 text-2xl font-extrabold whitespace-nowrap dark:text-white">
                                     Royal Food
                                 </span>
                             </Link>

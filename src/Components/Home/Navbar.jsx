@@ -1,29 +1,87 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
+import { auth } from "../../config/firebase.config";
+import { signOut } from "firebase/auth";
+import { Zoom, toast } from "react-toastify";
 
 /* eslint-disable react/prop-types */
 const Navbar = ({ children }) => {
-  const [user, setUser] = useState(false);
+  const {user,setUser} = useContext(AuthContext)
+  console.log(user);
+  // const [user, setUser] = useState(false);
+  const handleLogout = () =>{
+    signOut(auth)
+      .then(() => {
+        console.log("Sign-out successful");
+        toast.success('Logout successful', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition:Zoom
+          });
+        setUser(null);
+        // setClick(!click);
+      })
+      .catch((error) => {
+        console.log(error.massage);
+      });
+  }
   const nav = (
     <>
-      <NavLink>
+      <NavLink
+      className={({ isActive }) =>
+       isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
+       to={'/'}>
         <li>
-          <a>Home</a>
+          <p>Home</p>
         </li>
       </NavLink>
-      <NavLink to={'/allfood'}>
+      {
+        user&&<NavLink to={'/profile'}
+        className={({ isActive }) =>
+        isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
+        >
+          <li>
+            <p>Profile</p>
+          </li>
+        </NavLink>
+      }
+      <NavLink 
+      className={({ isActive }) =>
+      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
+      to={'/allfood'}>
         <li>
-          <a>All Food</a>
+          <p>All Food</p>
         </li>
       </NavLink>
-      <NavLink>
+      <NavLink 
+      className={({ isActive }) =>
+      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
+      to={'/addfood'}>
         <li>
-          <a>Add Food</a>
+          <p>Add Food</p>
         </li>
       </NavLink>
-      <NavLink>
+      <NavLink 
+      className={({ isActive }) =>
+      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
+      to={'/blogs'}>
         <li>
-          <a>Orderd Food</a>
+          <p>Blogs</p>
+        </li>
+      </NavLink>
+      <NavLink 
+      className={({ isActive }) =>
+      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
+      to={'/cart'}>
+        <li>
+          <p>My Cart</p>
         </li>
       </NavLink>
     </>
@@ -86,16 +144,16 @@ const Navbar = ({ children }) => {
                       "bg-green-500 border-2 hover:bg-base-300 hover:text-black hover:border-green-700 text-white px-3 font-semibold py-2 rounded-lg"
                     }
                   >
-                    <a onClick={() => setUser(false)}>Logout</a>
+                    <p onClick={handleLogout}>Logout</p>
                   </NavLink>
                 </>
               ) : (
-                <NavLink
+                <NavLink to={'login'}
                   className={
                     "bg-green-500 border-2 hover:bg-base-300 hover:text-black hover:border-green-700 text-white px-3 font-semibold py-2 rounded-lg"
                   }
                 >
-                  <a onClick={() => setUser(true)}>Login</a>
+                  <p>Login</p>
                 </NavLink>
               )}
             </div>
