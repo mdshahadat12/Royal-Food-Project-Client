@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 
 const FoodDetails = () => {
@@ -15,6 +16,9 @@ const FoodDetails = () => {
   const { _id, img, price, origin, madeBy, name, description, category } = data;
   return (
     <div>
+      <Helmet>
+        <title>Royal Food || Details</title>
+      </Helmet>
       <div>
         <div className="md:grid mt-10 md:grid-cols-6">
           <img

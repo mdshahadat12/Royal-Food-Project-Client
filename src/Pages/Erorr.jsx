@@ -1,7 +1,11 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 const Erorr = () => {
     return (
         <div>
+            <Helmet>
+        <title>Royal Food || Erorr</title>
+      </Helmet>
             <div className="flex items-center flex-col">
                 <div className="flex justify-center">
                     <img className="w-[150%] mt-16" src="https://i.ibb.co/d7KY06r/oppos-removebg-preview.png" alt="" />

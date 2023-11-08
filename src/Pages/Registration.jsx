@@ -5,6 +5,7 @@ import { AuthContext } from "../Context/AuthProvider";
 
 import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 
 const Registration = () => {
 
@@ -71,6 +72,9 @@ const Registration = () => {
         <h3 className="block font-sans text-3xl font-semibold leading-snug tracking-normal text-white antialiased">
           Registration
         </h3>
+        <Helmet>
+        <title>Royal Food || SignUp</title>
+      </Helmet>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-4 p-6">

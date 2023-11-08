@@ -89,7 +89,7 @@ const Navbar = ({ children }) => {
       isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
       to={'/cart'}>
         <li>
-          <p>My Cart</p>
+          <p>My Odered Food</p>
         </li>
       </NavLink>
     </>

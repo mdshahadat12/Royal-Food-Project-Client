@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import AddedFoodCard from "../Components/AddedFood/AddedFoodCard";
 import axios from "axios";
 import { AuthContext } from "../Context/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 
 const MyAdded = () => {
@@ -15,11 +16,16 @@ const MyAdded = () => {
         })
     },[user])
     return (
+        <>
+        <Helmet>
+        <title>Royal Food || My Added</title>
+      </Helmet>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {
                 data?.map(data=><AddedFoodCard data={data} key={data._id}></AddedFoodCard>)
             }
         </div>
+        </>
     );
 };
 

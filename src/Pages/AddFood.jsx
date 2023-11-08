@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const AddFood = () => {
   const {user} = useContext(AuthContext)
@@ -46,6 +47,9 @@ const AddFood = () => {
   };
   return (
     <div className={`p-10 bg-gray-300 rounded-lg my-10`}>
+      <Helmet>
+        <title>Royal Food || Add Food</title>
+      </Helmet>
       <h1 className="text-center font-bold text-3xl mb-5">Add a Food</h1>
       <form onSubmit={handlesubmit}>
         <div className="flex gap-5">

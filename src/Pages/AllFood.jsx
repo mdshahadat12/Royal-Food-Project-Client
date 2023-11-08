@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AllCard from "../Components/AllFood/AllCard";
+import { Helmet } from "react-helmet-async";
 
 const AllFood = () => {
   const [currentpage, setCurrentpage] = useState(1);
@@ -38,6 +39,9 @@ const AllFood = () => {
   return (
     <div>
       <h1 className="text-center text-3xl mt-5 font-bold">All Food!</h1>
+      <Helmet>
+        <title>Royal Food || All Food</title>
+      </Helmet>
       <div className="text-center">
         <form>
           <input
