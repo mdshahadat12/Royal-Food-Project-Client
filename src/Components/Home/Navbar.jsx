@@ -8,7 +8,7 @@ import { Zoom, toast } from "react-toastify";
 /* eslint-disable react/prop-types */
 const Navbar = ({ children }) => {
   const {user,setUser} = useContext(AuthContext)
-  console.log(user);
+  // console.log(user);
   // const [user, setUser] = useState(false);
   const handleLogout = () =>{
     signOut(auth)

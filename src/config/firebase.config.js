@@ -1,6 +1,6 @@
 import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-console.log(import.meta.env.VITE_APIKEY);
+// console.log(import.meta.env.VITE_APIKEY);
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APIKEY,
@@ -22,4 +22,4 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-console.log(firebaseConfig);
+// console.log(firebaseConfig);
