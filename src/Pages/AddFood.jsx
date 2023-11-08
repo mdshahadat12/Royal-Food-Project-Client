@@ -39,36 +39,36 @@ const AddFood = () => {
       });
   };
   return (
-    <div className={`p-10rounded-lg my-10`}>
+    <div className={`p-10 bg-gray-300 rounded-lg my-10`}>
       <h1 className="text-center font-bold text-3xl mb-5">Add a Food</h1>
       <form onSubmit={handlesubmit}>
         <div className="flex gap-5">
           <div>
             <input
               type="text"
-              className="p-3 mb-5 rounded-lg w-full outv"
+              className="p-3 mb-5 rounded-lg w-full"
               placeholder="Image Link"
               name="imglink"
             />
             <input
               type="text"
               className="p-3 rounded-lg w-full mb-5"
-              placeholder="Name"
+              placeholder="Food Name"
               name="name"
             />
             <input
               type="text"
               className="p-3 rounded-lg w-full"
-              placeholder="Brand Name"
-              name="bname"
+              placeholder="Category"
+              name="category"
             />
           </div>
           <div>
             <input
               type="text"
               className="p-3 mb-5 rounded-lg w-full"
-              placeholder="Type"
-              name="type"
+              placeholder="You"
+              name="email"
             />
             <input
               type="number"
@@ -79,11 +79,17 @@ const AddFood = () => {
             <input
               type="number"
               className="p-3 rounded-lg w-full"
-              placeholder="Rating"
-              name="rating"
+              placeholder="Quantity"
+              name="quantity"
             />
           </div>
         </div>
+        <input
+              type="text"
+              className="p-3 mt-5 rounded-lg w-full"
+              placeholder="Food origin"
+              name="origin"
+            />
         <textarea
           name="description"
           className="p-3 rounded-lg w-full mt-5"
@@ -94,7 +100,7 @@ const AddFood = () => {
           <input
             className="text-white py-2 px-4 bg-green-500 rounded-md w-1/2 cursor-pointer font-bold"
             type="submit"
-            value="Add Product"
+            value="Add a Food"
           />
         </div>
       </form>

@@ -71,6 +71,14 @@ const Navbar = ({ children }) => {
       <NavLink 
       className={({ isActive }) =>
       isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
+      to={'/myaddedfood'}>
+        <li>
+          <p>My Added Food</p>
+        </li>
+      </NavLink>
+      <NavLink 
+      className={({ isActive }) =>
+      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
       to={'/blogs'}>
         <li>
           <p>Blogs</p>

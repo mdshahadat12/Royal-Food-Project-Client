@@ -11,6 +11,7 @@ import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
 import FoodDetails from "../Components/AllFood/FoodDetails";
 import Purchase from "../Pages/Purchase";
+import MyAdded from "../Pages/MyAdded";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: "/addfood",
                 element:<AddFood></AddFood>
+            },
+            {
+                path: "/myaddedfood",
+                element:<MyAdded></MyAdded>
             },
             {
                 path: "/blogs",

@@ -1,8 +1,8 @@
 
 
-const CartCard = () => {
-  return (
-    <div className="flex">
+const AddedFoodCard = () => {
+    return (
+        <div className="flex">
       <img
         className="w-[200px] rounded-l-lg"
         src="https://i.ibb.co/2gbqYTD/health1.png"
@@ -18,12 +18,14 @@ const CartCard = () => {
           <p className=" font-semibold">made BY:</p>
           
         </div>
-        <div>
+        <div className="flex flex-col justify-between">
+        <button className="bg-red-500 rounded-md text-white font-semibold px-4 p-2">Update</button>
+        
         <button className="bg-red-500 rounded-md text-white font-semibold px-4 p-2">Delete</button>
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default CartCard;
+export default AddedFoodCard;
