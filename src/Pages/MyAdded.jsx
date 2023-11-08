@@ -1,13 +1,24 @@
+import { useContext, useEffect, useState } from "react";
 import AddedFoodCard from "../Components/AddedFood/AddedFoodCard";
+import axios from "axios";
+import { AuthContext } from "../Context/AuthProvider";
 
 
 const MyAdded = () => {
+    const {user} = useContext(AuthContext)
+    const [data,setData] = useState([]);
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/api/v1/addedFood?email=${user?.email}`)
+        .then(data=>{
+            setData(data.data)
+            console.log(data.data);
+        })
+    },[user])
     return (
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-            <AddedFoodCard></AddedFoodCard>
-            <AddedFoodCard></AddedFoodCard>
-            <AddedFoodCard></AddedFoodCard>
-            <AddedFoodCard></AddedFoodCard>
+            {
+                data?.map(data=><AddedFoodCard data={data} key={data._id}></AddedFoodCard>)
+            }
         </div>
     );
 };

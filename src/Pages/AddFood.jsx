@@ -1,29 +1,35 @@
-// import Swal from "sweetalert2";
+
+import { useContext } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Context/AuthProvider";
 
 const AddFood = () => {
+  const {user} = useContext(AuthContext)
   const handlesubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const imglink = form.imglink.value;
+    const img = form.imglink.value;
     const name = form.name.value;
-    const Bname = form.bname.value.toLowerCase();
-    const type = form.type.value;
+    const category = form.category.value;
+    const madeBy = form.email.value;
     const price = form.price.value;
-    const rating = form.rating.value;
+    const origin = form.origin.value;
+    const quantity = form.quantity.value;
     const description = form.description.value;
     const formValue = {
-      imglink,
+      img,
       name,
-      Bname,
-      type,
+      category,
+      madeBy,
       price,
-      rating,
+      quantity,
       description,
+      origin,
     };
     console.log(formValue);
 
     fetch(
-      "https://hunter-it-server-irg2xm2pc-mdshahadat12.vercel.app/product",
+      "http://localhost:5000/api/v1/allFood",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -69,6 +75,8 @@ const AddFood = () => {
               className="p-3 mb-5 rounded-lg w-full"
               placeholder="You"
               name="email"
+              readOnly
+              defaultValue={user?.email}
             />
             <input
               type="number"
