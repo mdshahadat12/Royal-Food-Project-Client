@@ -22,8 +22,10 @@ const Purchase = () => {
     const form = e.target;
     const date = form.date.value;
     const buyQuantity = form.quantity.value;
+    const email = form.email.value;
     const cartData = {
       _id,
+      email,
       buyQuantity,
       date,
       img,
@@ -37,9 +39,11 @@ const Purchase = () => {
     };
     console.log(cartData);
     fetch('http://localhost:5000/api/v1/cart',{
-      method:'POST',
-      headers:{},
-      body:JSON.stringify(cartData)
+      method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(cartData),
     })
     .then(res=>res.json())
     .then(data=>console.log(data))
