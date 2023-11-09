@@ -1,7 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -9,6 +9,7 @@ import axios from "axios";
 const SocialLogin = () => {
   const { signInWithGoogle, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation()
   const handleLgin = (logIn) => {
     logIn()
       .then((result) => {
@@ -36,7 +37,7 @@ const SocialLogin = () => {
         axios
           .post("https://royal-food-server.vercel.app/api/v1/user", result.user)
           .then((data) => console.log(data.data));
-        navigate("/");
+          navigate(location.state?location.state:"/");
       })
       .catch((error) => {
         toast.error(error.message, {

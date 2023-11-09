@@ -34,6 +34,7 @@ const Home = () => {
         </div>
       </div>
       <TopSixContainer></TopSixContainer>
+      <h1 className="text-center text-4xl my-5 font-bold">Customer Review</h1>
       <div className="h-[300px] my-10 w-[90vw]">
         <Slider></Slider>
       </div>

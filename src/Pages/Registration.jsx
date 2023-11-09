@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 // import SocialLogin from "../Components/Login/SocialLogin";
 
@@ -12,6 +12,7 @@ import axios from "axios";
 const Registration = () => {
   const { signupWithEmail, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,7 +64,7 @@ const Registration = () => {
         axios
           .post("https://royal-food-server.vercel.app/api/v1/user", result.user)
           .then((data) => console.log(data.data));
-        navigate("/");
+          navigate(location.state?location.state:"/");
       })
       .catch((error) => {
         toast.error(error.message, {
