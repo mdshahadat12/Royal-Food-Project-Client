@@ -22,14 +22,14 @@ export default function Slider() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide><div className='border border-gray-950 w-full h-full'></div></SwiperSlide>
-        <SwiperSlide><div className='border border-gray-950 w-full h-full'></div></SwiperSlide>
-        <SwiperSlide><div className='border border-gray-950 w-full h-full'></div></SwiperSlide>
-        <SwiperSlide><div className='border border-gray-950 w-full h-full'></div></SwiperSlide>
-        <SwiperSlide><div className='border border-gray-950 w-full h-full'></div></SwiperSlide>
-        <SwiperSlide><div className='border border-gray-950 w-full h-full'></div></SwiperSlide>
-        <SwiperSlide><div className='border border-gray-950 w-full h-full'></div></SwiperSlide>
-        <SwiperSlide><div className='border border-gray-950 w-full h-full'></div></SwiperSlide>
+        <SwiperSlide><div className='border border-gray-950 p-5 w-full h-full'><img src="https://i.ibb.co/xD0JGs0/MD-Shahadat.png" alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className='border border-gray-950 p-5 w-full h-full'><img src="https://i.ibb.co/xD0JGs0/MD-Shahadat.png" alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className='border border-gray-950 p-5 w-full h-full'><img src="https://i.ibb.co/xD0JGs0/MD-Shahadat.png" alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className='border border-gray-950 p-5 w-full h-full'><img src="https://i.ibb.co/xD0JGs0/MD-Shahadat.png" alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className='border border-gray-950 p-5 w-full h-full'><img src="https://i.ibb.co/xD0JGs0/MD-Shahadat.png" alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className='border border-gray-950 p-5 w-full h-full'><img src="https://i.ibb.co/xD0JGs0/MD-Shahadat.png" alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className='border border-gray-950 p-5 w-full h-full'><img src="https://i.ibb.co/xD0JGs0/MD-Shahadat.png" alt="" /></div></SwiperSlide>
+        
       </Swiper>
     </>
   );
