@@ -49,8 +49,13 @@ const Login = () => {
         });
         console.log(result.user);
         setUser(result.user);
-        axios.post('http://localhost:5000/api/v1/jwt',{email},{withCredentials:true})
-        .then(data=>console.log(data.data))
+        axios
+          .post(
+            "https://royal-food-server.vercel.app/api/v1/jwt",
+            { email },
+            { withCredentials: true }
+          )
+          .then((data) => console.log(data.data));
         navigate("/");
       })
       .catch((error) => {

@@ -7,7 +7,7 @@ const FoodDetails = () => {
   // console.log(id);
   const [data, setData] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/allfood/${id}`)
+    fetch(`https://royal-food-server.vercel.app/api/v1/allfood/${id}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [id]);

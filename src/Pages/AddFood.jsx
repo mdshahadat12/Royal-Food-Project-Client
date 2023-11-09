@@ -1,11 +1,10 @@
-
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthProvider";
 import { Helmet } from "react-helmet-async";
 
 const AddFood = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const handlesubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -29,14 +28,11 @@ const AddFood = () => {
     };
     console.log(formValue);
 
-    fetch(
-      "http://localhost:5000/api/v1/allFood",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formValue),
-      }
-    )
+    fetch("https://royal-food-server.vercel.app/api/v1/allFood", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formValue),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -97,11 +93,11 @@ const AddFood = () => {
           </div>
         </div>
         <input
-              type="text"
-              className="p-3 mt-5 rounded-lg w-full"
-              placeholder="Food origin"
-              name="origin"
-            />
+          type="text"
+          className="p-3 mt-5 rounded-lg w-full"
+          placeholder="Food origin"
+          name="origin"
+        />
         <textarea
           name="description"
           className="p-3 rounded-lg w-full mt-5"

@@ -34,7 +34,7 @@ const Navbar = ({ children }) => {
   };
   const clickNav = (
     <>
-    <NavLink
+      <NavLink
         className={({ isActive }) =>
           isActive
             ? "active bg-green-500 rounded-lg text-white font-semibold"
@@ -71,7 +71,7 @@ const Navbar = ({ children }) => {
         </li>
       </NavLink>
     </>
-  )
+  );
   const nav = (
     <>
       <NavLink
@@ -112,8 +112,7 @@ const Navbar = ({ children }) => {
           <p>All Food</p>
         </li>
       </NavLink>
-      
-      
+
       <NavLink
         className={({ isActive }) =>
           isActive
@@ -126,7 +125,6 @@ const Navbar = ({ children }) => {
           <p>Blogs</p>
         </li>
       </NavLink>
-      
     </>
   );
   return (
@@ -183,7 +181,13 @@ const Navbar = ({ children }) => {
                       className="btn btn-ghost btn-circle avatar"
                     >
                       <div className="w-10 rounded-full">
-                        <img src="https://i.ibb.co/t23zmR8/Logo.png" />
+                        <img
+                          src={
+                            user?.photoURL
+                              ? user?.photoURL
+                              : "https://i.ibb.co/t23zmR8/Logo.png"
+                          }
+                        />
                       </div>
                     </label>
                     <ul
@@ -192,12 +196,12 @@ const Navbar = ({ children }) => {
                     >
                       {clickNav}
                       <NavLink
-                    className={
-                      "bg-green-500 mt-5 border-2 hover:bg-base-300 hover:text-black hover:border-green-700 text-white px-3 font-semibold py-2 rounded-lg"
-                    }
-                  >
-                    <p onClick={handleLogout}>Logout</p>
-                  </NavLink>
+                        className={
+                          "bg-green-500 mt-5 border-2 hover:bg-base-300 hover:text-black hover:border-green-700 text-white px-3 font-semibold py-2 rounded-lg"
+                        }
+                      >
+                        <p onClick={handleLogout}>Logout</p>
+                      </NavLink>
                     </ul>
                   </div>
                 </>

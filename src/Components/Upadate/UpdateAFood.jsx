@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 
-const UpdateAFood = ({ data,setNewData }) => {
+const UpdateAFood = ({ data, setNewData }) => {
   const { user } = useContext(AuthContext);
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -27,24 +27,21 @@ const UpdateAFood = ({ data,setNewData }) => {
       origin,
     };
     console.log(formValue);
-    fetch(
-        `http://localhost:5000/api/v1/addedFood/${data._id}`,
-        {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(formValue),
+    fetch(`https://royal-food-server.vercel.app/api/v1/addedFood/${data._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(formValue),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          setNewData(formValue);
+          Swal.fire("Good job!", "Successfuly Updated!", "success");
         }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            if (data.modifiedCount) {
-              setNewData(formValue);
-            Swal.fire("Good job!", "Successfuly Updated!", "success");
-          }
-        });
+      });
   };
   const { img, name, category, price, quantity, description, origin } = data;
   return (
@@ -118,7 +115,9 @@ const UpdateAFood = ({ data,setNewData }) => {
           <button
             className="text-white py-2 px-4 bg-green-500 rounded-md w-1/2 cursor-pointer font-bold"
             type="submit"
-          >Add a Food</button>
+          >
+            Add a Food
+          </button>
         </div>
       </form>
     </div>

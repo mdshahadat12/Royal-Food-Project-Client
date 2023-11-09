@@ -8,14 +8,24 @@ const Purchase = () => {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/allfood/${id}`)
+    fetch(`https://royal-food-server.vercel.app/api/v1/allfood/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
         console.log(data);
       });
   }, [id]);
-  const { _id, img, name, category, madeBy, price, quantity, description, origin } = data;
+  const {
+    _id,
+    img,
+    name,
+    category,
+    madeBy,
+    price,
+    quantity,
+    description,
+    origin,
+  } = data;
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -38,15 +48,15 @@ const Purchase = () => {
       origin,
     };
     console.log(cartData);
-    fetch('http://localhost:5000/api/v1/cart',{
+    fetch("https://royal-food-server.vercel.app/api/v1/cart", {
       method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(cartData),
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(cartData),
     })
-    .then(res=>res.json())
-    .then(data=>console.log(data))
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
   return (
     <div className={`p-10rounded-lg my-10`}>

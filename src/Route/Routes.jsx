@@ -12,6 +12,7 @@ import Registration from "../Pages/Registration";
 import FoodDetails from "../Components/AllFood/FoodDetails";
 import Purchase from "../Pages/Purchase";
 import MyAdded from "../Pages/MyAdded";
+import PrivetRoute from "./PrivetRoute";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/profile",
-                element: <Profile></Profile>,
+                element: <PrivetRoute><Profile></Profile></PrivetRoute>,
             },
             {
                 path: "/allfood",
@@ -33,11 +34,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/addfood",
-                element:<AddFood></AddFood>
+                element:<PrivetRoute><AddFood></AddFood></PrivetRoute>
             },
             {
                 path: "/myaddedfood",
-                element:<MyAdded></MyAdded>
+                element:<PrivetRoute><MyAdded></MyAdded></PrivetRoute>
             },
             {
                 path: "/blogs",
@@ -45,15 +46,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/cart",
-                element:<Cart></Cart>
+                element:<PrivetRoute><Cart></Cart></PrivetRoute>
             },
             {
                 path: "/fooddetails/:id",
-                element:<FoodDetails></FoodDetails>
+                element:<PrivetRoute><FoodDetails></FoodDetails></PrivetRoute>
             },
             {
                 path: "/purchase/:id",
-                element:<Purchase></Purchase>
+                element:<PrivetRoute><Purchase></Purchase></PrivetRoute>
             },
         ]
     },

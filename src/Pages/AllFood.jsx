@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import AllCard from "../Components/AllFood/AllCard";
 import { Helmet } from "react-helmet-async";
+import Loading from "../Components/Loading";
 
 const AllFood = () => {
   const [currentpage, setCurrentpage] = useState(1);
+  const [IsLoading,setLoading] = useState(true)
   const [data, setData] = useState([]);
-  const [count, setCount] = useState(0)
+  const [searchdata, setsearchData] = useState([]);
+  const [count, setCount] = useState(0);
   const itemPerPage = 9;
   const pageNumber = Math.ceil(count.result / itemPerPage);
   const pages = [];
@@ -25,16 +28,38 @@ const AllFood = () => {
   };
   useEffect(() => {
     fetch(
-      `http://localhost:5000/api/v1/allFood?pageNum=${currentpage-1}&limit=${itemPerPage}`
+      `https://royal-food-server.vercel.app/api/v1/allFood?pageNum=${
+        currentpage - 1
+      }&limit=${itemPerPage}`
     )
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        setData(data)
+        setLoading(false)
+      });
 
-      fetch('http://localhost:5000/api/v1/foodcount')
-      .then(res=>res.json())
-      .then(data=>setCount(data))
+    fetch("https://royal-food-server.vercel.app/api/v1/foodcount")
+      .then((res) => res.json())
+      .then((data) => setCount(data));
   }, [currentpage, pageNumber]);
   // console.log(count);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const value = e.target.search.value;
+    console.log(value);
+    fetch("https://royal-food-server.vercel.app/api/v1/allFood")
+      .then((res) => res.json())
+      .then((data) => {
+        setsearchData(data)
+        setLoading(false)
+      });
+    const filterData = searchdata?.filter(
+      (data) => data.name.includes(value) == true
+    );
+    setData(filterData);
+    // setCount(filterData.length)
+  };
 
   return (
     <div>
@@ -43,37 +68,29 @@ const AllFood = () => {
         <title>Royal Food || All Food</title>
       </Helmet>
       <div className="text-center">
-        <form>
+        <form onSubmit={handleSearch}>
           <input
             className="p-2 w-[400px] border-2 border-green-700 rounded-lg"
             type="text"
             placeholder="Search"
             name="search"
-            id=""
-          />{" "}
+          />
           <input
             className="p-2 px-4 border-2 border-green-500 hover:border-green-700 cursor-pointer bg-green-500 rounded-lg mt-4 text-white font-semibold"
-            type="button"
+            type="submit"
             value="Search"
           />
         </form>
-        <div className="mt-5">
-          <button className="p-2 px-4 border-2 border-green-500 hover:border-green-700 cursor-pointer hover:bg-green-500 rounded-lg mt-4 hover:text-white font-semibold mr-5">
-            Category
-          </button>
-          <button className="p-2 px-4 border-2 border-green-500 hover:border-green-700 cursor-pointer hover:bg-green-500 rounded-lg mt-4 hover:text-white font-semibold mr-5">
-            Category
-          </button>
-          <button className="p-2 px-4 border-2 border-green-500 hover:border-green-700 cursor-pointer hover:bg-green-500 rounded-lg mt-4 hover:text-white font-semibold mr-5">
-            Category
-          </button>
-        </div>
+        
       </div>
-      <div className="grid grid-cols-1 my-10 md:grid-cols-3 gap-5">
+      {
+        IsLoading?<Loading></Loading>:
+        <div className="grid grid-cols-1 my-10 md:grid-cols-3 gap-5">
         {data?.map((data) => (
           <AllCard data={data} key={data._id}></AllCard>
         ))}
       </div>
+      }
       <div className="flex justify-center">
         <button onClick={prevBtn} className="btn mr-3 hover:bg-green-700">
           PREV
