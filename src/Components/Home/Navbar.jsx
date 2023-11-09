@@ -4,6 +4,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 import { auth } from "../../config/firebase.config";
 import { signOut } from "firebase/auth";
 import { Zoom, toast } from "react-toastify";
+import axios from "axios";
 
 /* eslint-disable react/prop-types */
 const Navbar = ({ children }) => {
@@ -26,6 +27,8 @@ const Navbar = ({ children }) => {
           transition: Zoom,
         });
         setUser(null);
+        axios.post('https://royal-food-server.vercel.app/api/v1/logout',{user},{withCredentials:true})
+        .then(data=>console.log(data.data))
         // setClick(!click);
       })
       .catch((error) => {

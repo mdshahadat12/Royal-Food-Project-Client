@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const Purchase = () => {
   const id = useParams().id;
@@ -56,7 +57,10 @@ const Purchase = () => {
       body: JSON.stringify(cartData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data)
+        Swal.fire("Good job!", "Successfuly Ordered!", "success");
+      });
   };
   return (
     <div className={`p-10rounded-lg my-10`}>

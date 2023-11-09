@@ -10,14 +10,14 @@ const Home = () => {
         <title>Royal Food || Home</title>
       </Helmet>
       {/* banner */}
-      <div className={`bg-orange-100 rounded-lg my-10 mx-auto flex flex-col-reverse md:flex-row items-center justify-center md:p-9`}>
+      <div className={`bg-blue-100 rounded-lg my-10 mx-auto flex flex-col-reverse md:flex-row items-center justify-center md:p-9`}>
         <div className="flex flex-col md:w-1/2 items-center text-center justify-center">
           <h3 className={` lg:text-3xl text-2xl font-semibold mb-9`}>
             -SALE FOOD-
           </h3>
           <h1 className={` lg:text-5xl text-3xl font-bold`}>
             Buy Food & get <br />
-            <span className="text-orange-500">40% off</span>
+            <span className="text-green-500">40% off</span>
           </h1>
           <div className="flex gap-4 text-xl font-semibold my-16 items-center">
             <button
