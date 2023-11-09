@@ -1,8 +1,16 @@
-# React + Vite
+# Royal Food
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [Live Site Link](https://royal-food-assignment.netlify.app)
 
-Currently, two official plugins are available:
+- Assignment No:005
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Website Feature
+
+- You can Login and Registration.
+- See Food and Add Orderd it.
+- added Food see Orderd page.
+- After login you can see your profile Picture in navbar.
+- if you logOut You can not MyCart.
+- LogOut by Clicking Profile then LOgOut Button.
+- If you not loggedin you Do not have access profile and Profile page.
+- Update and Add Food After Login.
