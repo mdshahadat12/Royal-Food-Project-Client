@@ -15,6 +15,10 @@ const MyAdded = () => {
             console.log(data.data);
         })
     },[user])
+    const handleDelete = (id)=>{
+        axios.delete(`http://localhost:5000/api/v1/addedFood/${id}`)
+        .then(data=>console.log(data.data))
+    }
     return (
         <>
         <Helmet>
@@ -22,7 +26,7 @@ const MyAdded = () => {
       </Helmet>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {
-                data?.map(data=><AddedFoodCard data={data} key={data._id}></AddedFoodCard>)
+                data?.map(data=><AddedFoodCard handleDelete={handleDelete} data={data} key={data._id}></AddedFoodCard>)
             }
         </div>
         </>
