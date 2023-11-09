@@ -7,6 +7,8 @@ import { Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../Context/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
+import SocialLogin from "../Components/Login/SocialLogin";
 
 const Login = () => {
   const { signInWithEmail, setUser } = useContext(AuthContext);
@@ -47,6 +49,8 @@ const Login = () => {
         });
         console.log(result.user);
         setUser(result.user);
+        axios.post('http://localhost:5000/api/v1/jwt',{email},{withCredentials:true})
+        .then(data=>console.log(data.data))
         navigate("/");
       })
       .catch((error) => {
@@ -143,7 +147,7 @@ const Login = () => {
             type="submit"
             value={"Log In"}
           />
-          {/* <SocialLogin></SocialLogin> */}
+          <SocialLogin></SocialLogin>
           <p className="mt-6 flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased">
             Do not have an account?
             <Link

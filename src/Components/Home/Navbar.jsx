@@ -7,14 +7,14 @@ import { Zoom, toast } from "react-toastify";
 
 /* eslint-disable react/prop-types */
 const Navbar = ({ children }) => {
-  const {user,setUser} = useContext(AuthContext)
+  const { user, setUser } = useContext(AuthContext);
   // console.log(user);
   // const [user, setUser] = useState(false);
-  const handleLogout = () =>{
+  const handleLogout = () => {
     signOut(auth)
       .then(() => {
         console.log("Sign-out successful");
-        toast.success('Logout successful', {
+        toast.success("Logout successful", {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -23,79 +23,114 @@ const Navbar = ({ children }) => {
           draggable: true,
           progress: undefined,
           theme: "light",
-          transition:Zoom
-          });
+          transition: Zoom,
+        });
         setUser(null);
         // setClick(!click);
       })
       .catch((error) => {
         console.log(error.massage);
       });
-  }
-  const nav = (
+  };
+  const clickNav = (
     <>
-      <NavLink
-      className={({ isActive }) =>
-       isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
-       to={'/'}>
-        <li>
-          <p>Home</p>
-        </li>
-      </NavLink>
-      {
-        user&&<NavLink to={'/profile'}
+    <NavLink
         className={({ isActive }) =>
-        isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
-        >
-          <li>
-            <p>Profile</p>
-          </li>
-        </NavLink>
-      }
-      <NavLink 
-      className={({ isActive }) =>
-      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
-      to={'/allfood'}>
-        <li>
-          <p>All Food</p>
-        </li>
-      </NavLink>
-      <NavLink 
-      className={({ isActive }) =>
-      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
-      to={'/addfood'}>
-        <li>
-          <p>Add Food</p>
-        </li>
-      </NavLink>
-      <NavLink 
-      className={({ isActive }) =>
-      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
-      to={'/myaddedfood'}>
+          isActive
+            ? "active bg-green-500 rounded-lg text-white font-semibold"
+            : ""
+        }
+        to={"/myaddedfood"}
+      >
         <li>
           <p>My Added Food</p>
         </li>
       </NavLink>
-      <NavLink 
-      className={({ isActive }) =>
-      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
-      to={'/blogs'}>
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "active bg-green-500 rounded-lg text-white font-semibold"
+            : ""
+        }
+        to={"/addfood"}
+      >
         <li>
-          <p>Blogs</p>
+          <p>Add Food</p>
         </li>
       </NavLink>
-      <NavLink 
-      className={({ isActive }) =>
-      isActive ? "active bg-green-500 rounded-lg text-white font-semibold" : ""}
-      to={'/cart'}>
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "active bg-green-500 rounded-lg text-white font-semibold"
+            : ""
+        }
+        to={"/cart"}
+      >
         <li>
           <p>My Odered Food</p>
         </li>
       </NavLink>
     </>
+  )
+  const nav = (
+    <>
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "active bg-green-500 rounded-lg text-white font-semibold"
+            : ""
+        }
+        to={"/"}
+      >
+        <li>
+          <p>Home</p>
+        </li>
+      </NavLink>
+      {user && (
+        <NavLink
+          to={"/profile"}
+          className={({ isActive }) =>
+            isActive
+              ? "active bg-green-500 rounded-lg text-white font-semibold"
+              : ""
+          }
+        >
+          <li>
+            <p>Profile</p>
+          </li>
+        </NavLink>
+      )}
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "active bg-green-500 rounded-lg text-white font-semibold"
+            : ""
+        }
+        to={"/allfood"}
+      >
+        <li>
+          <p>All Food</p>
+        </li>
+      </NavLink>
+      
+      
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "active bg-green-500 rounded-lg text-white font-semibold"
+            : ""
+        }
+        to={"/blogs"}
+      >
+        <li>
+          <p>Blogs</p>
+        </li>
+      </NavLink>
+      
+    </>
   );
   return (
-    <div className="drawer">
+    <div className="drawer relative">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
@@ -142,21 +177,33 @@ const Navbar = ({ children }) => {
             <div>
               {user ? (
                 <>
-                  <img
-                    className="rounded-full mr-3 w-10 outline-2 outline-gray-500"
-                    src="https://i.ibb.co/t23zmR8/Logo.png"
-                    alt=""
-                  />
-                  <NavLink
+                  <div className="dropdown dropdown-end">
+                    <label
+                      tabIndex={0}
+                      className="btn btn-ghost btn-circle avatar"
+                    >
+                      <div className="w-10 rounded-full">
+                        <img src="https://i.ibb.co/t23zmR8/Logo.png" />
+                      </div>
+                    </label>
+                    <ul
+                      tabIndex={0}
+                      className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                      {clickNav}
+                      <NavLink
                     className={
-                      "bg-green-500 border-2 hover:bg-base-300 hover:text-black hover:border-green-700 text-white px-3 font-semibold py-2 rounded-lg"
+                      "bg-green-500 mt-5 border-2 hover:bg-base-300 hover:text-black hover:border-green-700 text-white px-3 font-semibold py-2 rounded-lg"
                     }
                   >
                     <p onClick={handleLogout}>Logout</p>
                   </NavLink>
+                    </ul>
+                  </div>
                 </>
               ) : (
-                <NavLink to={'login'}
+                <NavLink
+                  to={"login"}
                   className={
                     "bg-green-500 border-2 hover:bg-base-300 hover:text-black hover:border-green-700 text-white px-3 font-semibold py-2 rounded-lg"
                   }

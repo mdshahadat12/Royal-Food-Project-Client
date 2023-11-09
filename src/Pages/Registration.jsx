@@ -6,6 +6,8 @@ import { AuthContext } from "../Context/AuthProvider";
 import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../Components/Login/SocialLogin";
+import axios from "axios";
 
 const Registration = () => {
 
@@ -48,6 +50,9 @@ const Registration = () => {
             transition:Zoom
             });
           setUser(result.user)
+          const email = result.user.email
+            axios.post('http://localhost:5000/api/v1/jwt',{email},{withCredentials:true})
+        .then(data=>console.log(data.data))
           navigate("/")
         })
         .catch(error=>{
@@ -164,7 +169,7 @@ const Registration = () => {
             value={'Registration'}
             
             />
-            {/* <SocialLogin></SocialLogin> */}
+            <SocialLogin></SocialLogin>
           <p className="mt-6 flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased">
             Already have an account?
             <Link

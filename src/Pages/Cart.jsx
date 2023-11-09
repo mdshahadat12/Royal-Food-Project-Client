@@ -8,7 +8,7 @@ const Cart = () => {
   const {user} = useContext(AuthContext) 
   const [data,setData] = useState([])
   useEffect(()=>{
-    axios.get(`http://localhost:5000/api/v1/cart?email=${user?.email}`)
+    axios.get(`http://localhost:5000/api/v1/cart?email=${user?.email}`,{withCredentials:true})
         .then(data=>{
             setData(data.data)
             // console.log(data.data);
