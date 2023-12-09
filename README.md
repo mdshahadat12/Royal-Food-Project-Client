@@ -2,7 +2,7 @@
 
 - [Live Site Link](https://royal-food-assignment.netlify.app)
 
-- Assignment No:005
+- Technology : JavaScript, React, JWT, Firebase, NodeJS, MongoDB
 
 # Website Feature
 
